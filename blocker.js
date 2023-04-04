@@ -90,7 +90,7 @@ const getPwnd = function() {
       console.info(e)
     }
 
-    console.log("Ran Once.")
+    // console.log("Ran Once.")
   }
   
 
