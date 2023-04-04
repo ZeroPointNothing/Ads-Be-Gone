@@ -85,12 +85,20 @@ const getPwnd = function() {
           element.parentNode.removeChild(element);
         }
       }
+
+      images = document.querySelectorAll("gwd-google-ad");
+      // console.info(images.length)
+      for (var i = 0; i < images.length; i++) {
+        var element = document.getElementById(images[i].id);
+        element.parentNode.removeChild(element);
+      }
+
     } catch ( e ) {
       console.info("[ABG:ERROR] - Exception occured. Ignoring.")
       console.info(e)
     }
 
-    // console.log("Ran Once.")
+    console.log("[ABG:WORKER] - Job Complete")
   }
   
 
