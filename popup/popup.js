@@ -1,16 +1,21 @@
 
 // SETTINGS -- START
 
+// chrome.storage.sync.remove('firstRun')
+// chrome.storage.sync.remove('blockByDefault')
+// alert("cleared")
 
 chrome.storage.sync.get('firstRun', function(result) {
   // If firstRun is not true or doesn't exist (the user just installed the extension), set all settings to default.
   if (!result.firstRun) {
     // Default Settings
-    chrome.storage.sync.set({ "blockByDefault": true });
+    chrome.storage.sync.set({ "blockByDefault": false });
     
     
     chrome.storage.sync.set({ "firstRun": true})
     console.log('Default Settings saved');
+    alert("Default Settings have been applied. You can change them by right clicking and selected the 'Ads's Be Gone! Settings' option. Please refresh any pages to allow ABG to function.")
+    chrome.tabs.reload({ bypassCache: true });
   }
 });
 
