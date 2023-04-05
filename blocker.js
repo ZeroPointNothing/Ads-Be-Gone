@@ -14,6 +14,8 @@ var blockerSites = [
   "google_ads"
 ]
 var blockAds = false
+const replace = 'https://github.com/ZeroPointNothing/Ads-Be-Gone/raw/main/assets/replaceimg.png'
+
 
 // Whether or not to count ad and ads in the search. This tends to be more effective, but also damaging to website contents.
 destructive = false
@@ -45,7 +47,7 @@ const getPwnd = function() {
     // alert(images.length)
     for (var i = 0; i < images.length; i++) {
       if (checkForBlock(images[i].src)) {
-        images[i].src = 'get pwned lmaooooo';
+        images[i].src = replace;
       }
     }
 
@@ -53,7 +55,7 @@ const getPwnd = function() {
     // alert(images.length)
     for (var i = 0; i < images.length; i++) {
       if (checkForBlock(images[i].src)) {
-        images[i].src = 'get pwned lmaooooo';
+        images[i].src = replace;
       }
     }
 
@@ -61,7 +63,7 @@ const getPwnd = function() {
     // alert(images.length)
     for (var i = 0; i < images.length; i++) {
       if (checkForBlock(images[i].href)) {
-        images[i].href = 'get pwned lmaooooo';
+        images[i].href = replace;
       }
     }
   
@@ -85,12 +87,20 @@ const getPwnd = function() {
           element.parentNode.removeChild(element);
         }
       }
+
+      images = document.querySelectorAll("gwd-google-ad");
+      // console.info(images.length)
+      for (var i = 0; i < images.length; i++) {
+        var element = document.getElementById(images[i].id);
+        element.parentNode.removeChild(element);
+      }
+
     } catch ( e ) {
       console.info("[ABG:ERROR] - Exception occured. Ignoring.")
       console.info(e)
     }
 
-    // console.log("Ran Once.")
+    console.log("[ABG:WORKER] - Job Complete")
   }
   
 
