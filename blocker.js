@@ -114,10 +114,12 @@ const getPwnd = function() {
   
   
   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    console.log(`message recieved. ${request.message}`)
     // If the user toggles the blocking on, start blocking. Else, simply return.
     // This code sets the toggle.
     if (request.message === "togglestate") {
       // Toggle
+      
       if (blockAds) {
         blockAds = false
         console.log("[ABG:INFO] - No longer Blocking Ads...")
@@ -125,6 +127,12 @@ const getPwnd = function() {
         blockAds = true
         console.log("[ABG:INFO] - Blocking Ads...")
       }
+      sendResponse({message: "200"})
+    }
+
+    if (request.message === "stateIcon") {
+      console.log("blocker.js recieved request for blockAds state.")
+      sendResponse({message: blockAds})
     }
   });
 
