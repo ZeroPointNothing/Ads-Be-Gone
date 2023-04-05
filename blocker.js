@@ -13,7 +13,15 @@ var blockerSites = [
   "amznBanners_assoc_banner",
   "google_ads"
 ]
-var blockAds = false
+
+// LOAD SETTINGS -- START
+chrome.storage.sync.get('blockByDefault', function(result) {
+  blockAds = result.blockByDefault
+});
+
+// LOAD SETTINGS -- END
+
+
 const replace = 'https://github.com/ZeroPointNothing/Ads-Be-Gone/raw/main/assets/replaceimg.png'
 
 

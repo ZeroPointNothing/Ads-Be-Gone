@@ -1,7 +1,21 @@
-// alert("Hello, world!")
+
+// SETTINGS -- START
 
 
+chrome.storage.sync.get('firstRun', function(result) {
+  // If firstRun is not true or doesn't exist (the user just installed the extension), set all settings to default.
+  if (!result.firstRun) {
+    // Default Settings
+    chrome.storage.sync.set({ "blockByDefault": true });
+    
+    
+    chrome.storage.sync.set({ "firstRun": true})
+    console.log('Default Settings saved');
+  }
+});
 
+
+// SETTINGS -- END
 
 // Send a message to the injected blocker, telling it whether or not to preform the blocking.
 
