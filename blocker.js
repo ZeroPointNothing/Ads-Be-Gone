@@ -13,7 +13,15 @@ var blockerSites = [
   "amznBanners_assoc_banner",
   "google_ads"
 ]
-var blockAds = false
+
+// LOAD SETTINGS -- START
+chrome.storage.sync.get('blockByDefault', function(result) {
+  blockAds = result.blockByDefault
+});
+
+// LOAD SETTINGS -- END
+
+
 const replace = 'https://github.com/ZeroPointNothing/Ads-Be-Gone/raw/main/assets/replaceimg.png'
 
 
@@ -114,10 +122,12 @@ const getPwnd = function() {
   
   
   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    //console.log(`message recieved. ${request.message}`)
     // If the user toggles the blocking on, start blocking. Else, simply return.
     // This code sets the toggle.
     if (request.message === "togglestate") {
       // Toggle
+      
       if (blockAds) {
         blockAds = false
         console.log("[ABG:INFO] - No longer Blocking Ads...")
@@ -125,10 +135,15 @@ const getPwnd = function() {
         blockAds = true
         console.log("[ABG:INFO] - Blocking Ads...")
       }
+      sendResponse({message: "200"})
+    }
+
+    if (request.message === "stateIcon") {
+      //console.log("blocker.js recieved request for blockAds state.")
+      sendResponse({message: blockAds})
     }
   });
 
-  // 
   setInterval(checkBlockStatus, 2000)
   console.info("[ABG:INFO] - Blocker Script succesfully injected! Loop started...");
   console.log(blockerSites)
