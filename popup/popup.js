@@ -31,8 +31,12 @@ document.getElementById("pwnLoop").onclick = function() {
                 alert(`Something happened, preventing ABG from running. (${chrome.runtime.lastError.message})`)
             }
             // If blocker.js responds succesfully, update the prompt.
-            if (response.message === "200") {
-              getStateIcons()
+            try {
+              if (response.message === "200") {
+                getStateIcons()
+              }
+            } catch ( e ) {
+              return
             }
 
           });
