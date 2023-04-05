@@ -14,6 +14,8 @@ var blockerSites = [
   "google_ads"
 ]
 var blockAds = false
+const replace = 'https://github.com/ZeroPointNothing/Ads-Be-Gone/raw/main/assets/replaceimg.png'
+
 
 // Whether or not to count ad and ads in the search. This tends to be more effective, but also damaging to website contents.
 destructive = false
@@ -45,7 +47,7 @@ const getPwnd = function() {
     // alert(images.length)
     for (var i = 0; i < images.length; i++) {
       if (checkForBlock(images[i].src)) {
-        images[i].src = 'get pwned lmaooooo';
+        images[i].src = replace;
       }
     }
 
@@ -53,7 +55,7 @@ const getPwnd = function() {
     // alert(images.length)
     for (var i = 0; i < images.length; i++) {
       if (checkForBlock(images[i].src)) {
-        images[i].src = 'get pwned lmaooooo';
+        images[i].src = replace;
       }
     }
 
@@ -61,7 +63,7 @@ const getPwnd = function() {
     // alert(images.length)
     for (var i = 0; i < images.length; i++) {
       if (checkForBlock(images[i].href)) {
-        images[i].href = 'get pwned lmaooooo';
+        images[i].href = replace;
       }
     }
   
