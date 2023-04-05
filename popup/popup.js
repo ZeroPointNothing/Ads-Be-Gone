@@ -14,7 +14,8 @@ chrome.storage.sync.get('firstRun', function(result) {
     
     chrome.storage.sync.set({ "firstRun": true})
     console.log('Default Settings saved');
-    alert("Default Settings have been applied. You can change them by right clicking and selected the 'Ads's Be Gone! Settings' option. Please refresh any pages to allow ABG to function.")
+    alert("Default Settings have been applied. You can change them by clicking the settings button. Please refresh any pages to allow ABG to function.")
+
     chrome.tabs.reload({ bypassCache: true });
   }
 });
