@@ -144,7 +144,6 @@ const getPwnd = function() {
     }
   });
 
-  // 
   setInterval(checkBlockStatus, 2000)
   console.info("[ABG:INFO] - Blocker Script succesfully injected! Loop started...");
   console.log(blockerSites)

@@ -70,7 +70,6 @@ function getStateIcons() {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.sendMessage(tabs[0].id, {message: "stateIcon"}, function(response) {
         if (chrome.runtime.lastError) {
-          // Ignore this specific error as it isn't a real one.
           if (chrome.runtime.lastError.message == "The message port closed before a response was received.") {
             return
           }
