@@ -20,7 +20,12 @@ chrome.storage.sync.get('firstRun', function(result) {
 });
 
 
+
 // SETTINGS -- END
+
+document.getElementById("settingsButton").onclick = function() {
+  chrome.tabs.create({ url: chrome.runtime.getURL("popup/settings.html") });
+}
 
 // Send a message to the injected blocker, telling it whether or not to preform the blocking.
 

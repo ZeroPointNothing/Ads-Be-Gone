@@ -13,9 +13,6 @@
         "tabs",
         "contextMenus"
     ],
-    "background": {
-      "service_worker": "popup/background.js"
-    },
 
     "content_scripts": [
         {
