@@ -2,7 +2,7 @@
 
 My first browser extension, and probably the most useful project of mine to date.
 
-**[To installation guide](https://github.com/ZeroPointNothing/Ads-Be-Gone/wiki/Installation)**
+**[To installation guide](https://github.com/ZeroPointNothing/Ads-Be-Gone/wiki/Installation-and-Supported-Browsers)**
 
 ***
 
