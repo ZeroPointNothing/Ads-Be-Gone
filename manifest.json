@@ -1,6 +1,6 @@
 {
     "name": "Ads, Be Gone!",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "manifest_version": 3,
     "description": "An extension to block those pesky little ads.",
     "author": "ZeroPointNothing",
