@@ -10,12 +10,12 @@ chrome.storage.sync.get('firstRun', function(result) {
   if (!result.firstRun) {
     // Default Settings
     chrome.storage.sync.set({ "blockByDefault": false });
+    chrome.storage.sync.set({ "destructiveToggle": false })
     
     
     chrome.storage.sync.set({ "firstRun": true})
     console.log('Default Settings saved');
     alert("Default Settings have been applied. You can change them by clicking the settings button. Please refresh any pages to allow ABG to function.")
-
     chrome.tabs.reload({ bypassCache: true });
   }
 });
@@ -72,6 +72,12 @@ document.getElementById("pwnLoop").onclick = function() {
 }
 
 function getStateIcons() {
+
+  destructiveToggle = chrome.storage.sync.get("destructiveToggle", function(result) {
+    if (result.destructiveToggle) {
+      document.getElementById("title").style["color"] = "red"
+    }
+  });
   // Get the state of blocker.js and inform the user if the blocker is online or not.
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.sendMessage(tabs[0].id, {message: "stateIcon"}, function(response) {

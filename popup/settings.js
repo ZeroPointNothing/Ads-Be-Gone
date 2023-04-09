@@ -9,10 +9,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+
+  chrome.storage.sync.get('destructiveToggle', function(result) {
+    if (typeof destructiveToggle != "undefined") {
+      destructiveToggle.checked = result.destructiveToggle
+    }
+  });
+
   saveButton.addEventListener('click', function() {
     // Save ABG settings.
     chrome.storage.sync.set({ "blockByDefault": blockByDefault.checked });
+    chrome.storage.sync.set({ "destructiveToggle": destructiveToggle.checked })
     console.log('Settings saved');
+
+    document.getElementById("save-alert").innerHTML = "Settings Saved!"
   });
 });
 

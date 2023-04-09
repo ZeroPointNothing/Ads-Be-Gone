@@ -19,18 +19,22 @@ chrome.storage.sync.get('blockByDefault', function(result) {
   blockAds = result.blockByDefault
 });
 
+chrome.storage.sync.get('destructiveToggle', function(result) {
+  destructive = result.destructiveToggle
+  // Whether or not to count ad and ads in the search. This tends to be more effective, but also damaging to website contents.
+  if (destructive) {
+    blockerSites.push('ad', 'ads')
+  }
+  console.log(blockerSites)
+});
+
 // LOAD SETTINGS -- END
 
 
 const replace = 'https://github.com/ZeroPointNothing/Ads-Be-Gone/raw/main/assets/replaceimg.png'
 
 
-// Whether or not to count ad and ads in the search. This tends to be more effective, but also damaging to website contents.
-destructive = false
-//
-if (destructive) {
-  blockerSites.push('ad', 'ads')
-}
+
 
 const checkForBlock = function(src) {
   try {
@@ -119,7 +123,7 @@ const getPwnd = function() {
     }
   }
 
-  
+
   
   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     //console.log(`message recieved. ${request.message}`)
@@ -127,7 +131,6 @@ const getPwnd = function() {
     // This code sets the toggle.
     if (request.message === "togglestate") {
       // Toggle
-      
       if (blockAds) {
         blockAds = false
         console.log("[ABG:INFO] - No longer Blocking Ads...")
@@ -146,5 +149,5 @@ const getPwnd = function() {
 
   setInterval(checkBlockStatus, 2000)
   console.info("[ABG:INFO] - Blocker Script succesfully injected! Loop started...");
-  console.log(blockerSites)
+
   
