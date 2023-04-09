@@ -10,7 +10,7 @@
         "activeTab",
         "scripting",
         "storage",
-        "tabs",
+        "tabs"
     ],
 
     "content_scripts": [
