@@ -29,4 +29,4 @@ If applicable, add screenshots to help explain your problem.
  - Version [e.g. 22]
 
 **Additional context**
-Add any other context about the problem here.
+Is this bug only on specific pages? Do you see anything in the F12 console?
